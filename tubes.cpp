@@ -380,6 +380,48 @@ void deleteHalteDanRute(graph &G, string asal, string tujuan){
 
 };
 
+//void deleteHalteDoang(graph &G, string halte) {
+//    adrVertex v = firstVertex(G);
+//    while (v != NULL) {
+//        adrEdge prev = NULL;
+//        adrEdge e = firstEdge(v);
+//        while (e != NULL) {
+//            if (destVertexID(e) == halte) {
+//                if (prev == NULL) {
+//                    firstEdge(v) = nextEdge(e);
+//                } else {
+//                    nextEdge(prev) = nextEdge(e);
+//                }
+//                adrEdge temp = e;
+//                e = nextEdge(e);
+//                delete temp;
+//            } else {
+//                prev = e;
+//                e = nextEdge(e);
+//            }
+//        }
+//        v = nextVertex(v);
+//    }
+//
+//    adrVertex P = firstVertex(G);
+//    adrVertex temp = NULL;
+//    while (P != NULL && idVertex(P) != halte) {
+//        temp = P;
+//        P = nextVertex(P);
+//    }
+//    if (P != NULL) {
+//        if (temp != NULL) {
+//            nextVertex(temp) = nextVertex(P);
+//        } else {
+//            firstVertex(G) = nextVertex(P);
+//        }
+//        nextVertex(P) = NULL;
+//        idVertex(P) = "";
+//        firstEdge(P) = NULL;
+//        delete P;
+//    }
+//}
+
 void deleteHalteDoang(graph &G, string halte) {
     adrVertex v = firstVertex(G);
     while (v != NULL) {
@@ -418,7 +460,7 @@ void deleteHalteDoang(graph &G, string halte) {
         nextVertex(P) = NULL;
         idVertex(P) = "";
         firstEdge(P) = NULL;
-        delete P;
+        P = NULL;
     }
 }
 

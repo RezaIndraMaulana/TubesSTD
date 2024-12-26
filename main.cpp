@@ -111,7 +111,13 @@ int main()
             string halte;
             cout << "Masukan nama halte yang akan di hapus: ";
             cin >> halte;
-            deleteHalteDoang(G, halte);
+            adrVertex P = cariHalte(G,halte);
+            if (P != NULL){
+                deleteHalteDoang(G, halte);
+                cout << "Halte dengan nama " << halte << " telah berhasil di hapus." << endl;
+            }else{
+                cout << "Halte tidak ditemukan." << endl;
+            }
             break;
         }
         case 9:{
