@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1584205420 source:e:\c++\tubes\main.cpp
+	<iostream>
+
+1734401802 source:d:\project\projectcodeblocks\tubes\main.cpp
+	"tubes.h"
+
+1734366077 d:\project\projectcodeblocks\tubes\tubes.h
+	<iostream>
+
+1734402163 source:d:\project\projectcodeblocks\tubes\tubes.cpp
+	"tubes.h"
+
+1734865443 source:e:\c++\tubesrevisi\tubes\main.cpp
+	"tubes.h"
+
+1734864312 e:\c++\tubesrevisi\tubes\tubes.h
+	<iostream>
+
+1734865366 source:e:\c++\tubesrevisi\tubes\tubes.cpp
+	"tubes.h"
+
+1735119643 source:d:\project\projectcodeblocks\tubesrevisi\tubes\main.cpp
+	"tubes.h"
+
+1734864312 d:\project\projectcodeblocks\tubesrevisi\tubes\tubes.h
+	<iostream>
+
+1735120127 source:d:\project\projectcodeblocks\tubesrevisi\tubes\tubes.cpp
+	"tubes.h"
+
