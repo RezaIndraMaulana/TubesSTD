@@ -21,6 +21,7 @@ int main()
 
     Menu();
     cout << endl;
+    cout << "Pilih Menu : ";
     cin >> pilihan;
 
     while (pilihan != 0) {
@@ -131,8 +132,11 @@ int main()
         }
         cout << "------------------------------------------" << endl;
         Menu();
+        cout << "Pilih Menu : ";
         cin >> pilihan;
     }
+    cout << endl;
+    cout << "Terimakasih telah menggunakan program halte kami ^_^";
 
     return 0;
 }

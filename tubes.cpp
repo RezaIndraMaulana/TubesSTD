@@ -79,7 +79,7 @@ void Menu(){
     cout << "4. Mencari Rute Termurah" << endl;
     cout << "5. Mencari Rute Termahal" << endl;
     cout << "6. Membuat Halte Baru" << endl;
-    cout << "7. Membuat Rute Halte baru atau halte yang sudah ada" << endl;
+    cout << "7. Membuat Rute Halte baru dari Halte yang sudah ada" << endl;
     cout << "8. Hapus Halte" << endl;
     cout << "9. Hapus Rute" << endl;
     cout << "0. Keluar" << endl;
@@ -152,7 +152,7 @@ void pencarianRuteTermurah(graph &G, string tAwal, string tTujuan) {
         return;
     }
 
-    const int MAX_VERTEX = 100;
+    //buat inisiasi doang
     int harga[MAX_VERTEX];
     bool visited[MAX_VERTEX];
     adrVertex vertexArray[MAX_VERTEX];
@@ -174,6 +174,7 @@ void pencarianRuteTermurah(graph &G, string tAwal, string tTujuan) {
 
     harga[idxAwal] = 0;
 
+    //buat ngecek harga terkecil
     for (int i = 0; i < jumlahVertex; ++i) {
         int minHarga = INT_MAX;
         int idxMin = -1;
@@ -188,6 +189,7 @@ void pencarianRuteTermurah(graph &G, string tAwal, string tTujuan) {
         if (idxMin == -1) break;
         visited[idxMin] = true;
 
+        //buat ngecek tetangga ( edge )
         adrEdge edge = firstEdge(vertexArray[idxMin]);
         while (edge != NULL) {
             int idxTetangga = -1;
@@ -197,6 +199,8 @@ void pencarianRuteTermurah(graph &G, string tAwal, string tTujuan) {
                     break;
                 }
             }
+
+            //buat update harganya buat total nanti
             if (idxTetangga != -1 && !visited[idxTetangga]) {
                 int hargaBaru = harga[idxMin] + price(edge);
                 if (hargaBaru < harga[idxTetangga]) {
@@ -213,12 +217,15 @@ void pencarianRuteTermurah(graph &G, string tAwal, string tTujuan) {
     } else {
         cout << "Rute Termurah dari " << tAwal << " ke " << tTujuan << " melalui jalan berikut:" << endl;
 
+        //nyari rute mana aja tadi yang ditemuin
         int path[MAX_VERTEX];
         int pathIdx = 0;
         for (int idx = idxAkhir; idx != -1; idx = predecessor[idx]) {
             path[pathIdx++] = idx;
         }
 
+
+        //nampilin rutenya
         for (int i = pathIdx - 1; i >= 0; --i) {
             cout << idVertex(vertexArray[path[i]]);
             if (i > 0) cout << " - ";
@@ -229,6 +236,7 @@ void pencarianRuteTermurah(graph &G, string tAwal, string tTujuan) {
     }
 }
 
+//persis kek diatas tapi ini maxHarga aj
 void pencarianRuteTermahal(graph &G, string tAwal, string tTujuan) {
     adrVertex Awal = cariHalte(G, tAwal);
     adrVertex Akhir = cariHalte(G, tTujuan);
@@ -238,7 +246,7 @@ void pencarianRuteTermahal(graph &G, string tAwal, string tTujuan) {
         return;
     }
 
-    const int MAX_VERTEX = 100;
+    //inisiasi doang
     int harga[MAX_VERTEX];
     bool visited[MAX_VERTEX];
     adrVertex vertexArray[MAX_VERTEX];
@@ -249,7 +257,7 @@ void pencarianRuteTermahal(graph &G, string tAwal, string tTujuan) {
     adrVertex current = firstVertex(G);
     while (current != NULL) {
         vertexArray[jumlahVertex] = current;
-        harga[jumlahVertex] = INT_MIN;=
+        harga[jumlahVertex] = INT_MIN;
         visited[jumlahVertex] = false;
         predecessor[jumlahVertex] = -1;
         if (current == Awal) idxAwal = jumlahVertex;
@@ -260,6 +268,7 @@ void pencarianRuteTermahal(graph &G, string tAwal, string tTujuan) {
 
     harga[idxAwal] = 0;
 
+    //buat ngecek maxHarga
     for (int i = 0; i < jumlahVertex; ++i) {
         int maxHarga = INT_MIN;
         int idxMax = -1;
@@ -274,6 +283,7 @@ void pencarianRuteTermahal(graph &G, string tAwal, string tTujuan) {
         if (idxMax == -1) break;
         visited[idxMax] = true;
 
+        //mencari tetangga ( edge )
         adrEdge edge = firstEdge(vertexArray[idxMax]);
         while (edge != NULL) {
             int idxTetangga = -1;
@@ -283,6 +293,8 @@ void pencarianRuteTermahal(graph &G, string tAwal, string tTujuan) {
                     break;
                 }
             }
+
+            //update harga
             if (idxTetangga != -1 && !visited[idxTetangga]) {
                 int hargaBaru = harga[idxMax] + price(edge);
                 if (hargaBaru > harga[idxTetangga]) {
